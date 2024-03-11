@@ -2442,7 +2442,7 @@
   },
   {
     "type": "keybinding",
-    "name": "List all items around the player",
+    "name": "List nearby items, monsters, terrain and furniture",
     "category": "DEFAULTMODE",
     "id": "listitems",
     "bindings": [ { "input_method": "keyboard_char", "key": "V" }, { "input_method": "keyboard_code", "key": "v", "mod": [ "shift" ] } ]
@@ -3279,7 +3279,7 @@
     "type": "keybinding",
     "id": "LIST_ITEMS",
     "category": "LOOK",
-    "name": "List items and monsters",
+    "name": "List nearby items, monsters, terrain and furniture",
     "bindings": [ { "input_method": "keyboard_char", "key": "V" }, { "input_method": "keyboard_code", "key": "v", "mod": [ "shift" ] } ]
   },
   {
