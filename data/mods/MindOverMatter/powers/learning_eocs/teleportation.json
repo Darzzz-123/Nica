@@ -2,7 +2,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_PHASE",
-    "recurrence": [ "12 hours", "24 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_one_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_one_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -10,55 +13,7 @@
         {
           "or": [ { "x_in_y_chance": { "x": 1, "y": 20 } }, { "math": [ "u_spell_level('teleport_blink')", ">=", "6" ] } ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_phase')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_phase" } }
       ]
@@ -76,7 +31,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_STRIDE",
-    "recurrence": [ "12 hours", "24 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_one_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_one_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -92,55 +50,7 @@
             }
           ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_stride')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_stride" } }
       ]
@@ -158,7 +68,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_TRANSPOSE",
-    "recurrence": [ "36 hours", "72 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_two_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_two_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -174,55 +87,7 @@
             }
           ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_transpose')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_transpose" } }
       ]
@@ -242,7 +107,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_DISPLACEMENT",
-    "recurrence": [ "36 hours", "72 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_two_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_two_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -258,55 +126,7 @@
             }
           ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_displacement')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_displacement" } }
       ]
@@ -326,7 +146,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_COLLAPSE",
-    "recurrence": [ "36 hours", "72 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_two_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_two_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -347,55 +170,7 @@
             }
           ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_collapse')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_collapse" } }
       ]
@@ -415,7 +190,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_FARSTEP",
-    "recurrence": [ "36 hours", "72 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_two_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_two_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -436,55 +214,7 @@
             }
           ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_farstep')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_farstep" } }
       ]
@@ -502,7 +232,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_BANISH",
-    "recurrence": [ "96 hours", "168 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_three_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_three_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -524,55 +257,7 @@
             }
           ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_banish')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_banish" } }
       ]
@@ -590,7 +275,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_GATEWAY",
-    "recurrence": [ "96 hours", "168 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_three_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_three_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -606,55 +294,7 @@
             }
           ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_gateway')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_gateway" } }
       ]
@@ -672,7 +312,10 @@
   {
     "type": "effect_on_condition",
     "id": "EOC_TELEPORT_LEARNING_BREACH",
-    "recurrence": [ "96 hours", "168 hours" ],
+    "recurrence": [
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_three_power_learning_time_low)" ] },
+      { "math": [ "jmath_teleportation_learning_eocs_modifiers(global_tier_three_power_learning_time_high)" ] }
+    ],
     "condition": {
       "and": [
         { "u_has_trait": "TELEPORTER" },
@@ -693,55 +336,7 @@
             }
           ]
         },
-        {
-          "not": {
-            "u_has_any_effect": [
-              "sleep",
-              "effect_psi_learning_new_power",
-              "effect_vitakin_wakeful_resting",
-              "infected",
-              "spores",
-              "taint",
-              "visuals",
-              "hallu",
-              "motor_seizure",
-              "frostbite",
-              "blisters",
-              "formication",
-              "pre_common_cold",
-              "common_cold",
-              "pre_flu",
-              "flu",
-              "pre_conjunctivitis_viral",
-              "conjunctivitis_viral",
-              "pre_conjunctivitis_bacterial",
-              "conjunctivitis_bacterial",
-              "asthma",
-              "brainworms",
-              "bloodworms",
-              "grabbed",
-              "lack_sleep",
-              "sleep_deprived",
-              "under_operation",
-              "zapped",
-              "electrocuted",
-              "anemia",
-              "redcells_anemia",
-              "scurvy",
-              "toxin_buildup",
-              "bad_food_ennui",
-              "hypovolemia",
-              "disabled",
-              "foodpoison",
-              "venom_pain",
-              "venom_dmg",
-              "badpoison",
-              "onfire",
-              "dazed",
-              "stunned"
-            ]
-          }
-        },
+        { "test_eoc": "EOC_PSI_LEARNING_BANNED_EFFECTS" },
         { "math": [ "u_spell_level('teleport_breach')", "<=", "0" ] },
         { "not": { "u_know_recipe": "practice_teleport_breach" } }
       ]
