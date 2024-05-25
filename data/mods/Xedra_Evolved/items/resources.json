@@ -286,7 +286,7 @@
     "description": "A large log of living wood, sung from a tree by elemental magick."
   },
   {
-    "type": "GENERIC",
+    "type": "AMMO",
     "id": "obsidian_rock",
     "copy-from": "rock",
     "name": { "str": "chunk of obsidian", "str_pl": "chunks of obsidian" },
