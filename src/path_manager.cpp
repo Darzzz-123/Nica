@@ -517,14 +517,14 @@ void path_manager_ui::enabled_active_button( const std::string action, bool enab
 void path_manager_ui::draw_controls()
 {
     // walk buttons
-    cataimgui::draw_colored_text( _( "Walk:" ) );
+    draw_colored_text( _( "Walk:" ) );
     ImGui::SameLine();
     enabled_active_button( "WALK_PATH", pimpl->avatar_at_what_start_or_end() != -1 );
     ImGui::SameLine();
     enabled_active_button( "WALK_PATH_FROM_MIDDLE", !pimpl->avatar_at_what_paths().empty() );
 
     // recording buttons
-    cataimgui::draw_colored_text( _( "Recording:" ) );
+    draw_colored_text( _( "Recording:" ) );
     ImGui::SameLine();
     enabled_active_button( "START_RECORDING", !pimpl->is_recording_path() );
     ImGui::SameLine();
@@ -534,7 +534,7 @@ void path_manager_ui::draw_controls()
     enabled_active_button( "STOP_RECORDING", pimpl->is_recording_path() );
 
     // manage buttons
-    cataimgui::draw_colored_text( _( "Manage:" ) );
+    draw_colored_text( _( "Manage:" ) );
     ImGui::SameLine();
     enabled_active_button( "DELETE_PATH", pimpl->selected_id != -1 );
     ImGui::SameLine();
@@ -544,7 +544,7 @@ void path_manager_ui::draw_controls()
                            pimpl->selected_id + 1 < static_cast<int>( pimpl->paths.size() ) );
 
     // name buttons
-    cataimgui::draw_colored_text( _( "Rename:" ) );
+    draw_colored_text( _( "Rename:" ) );
     ImGui::SameLine();
     enabled_active_button( "RENAME_START", pimpl->selected_id != -1 );
     ImGui::SameLine();
@@ -577,20 +577,20 @@ void path_manager_ui::draw_controls()
                 pimpl->selected_id = i;
             }
             ImGui::SameLine();
-            cataimgui::draw_colored_text( curr_path.name_start );
+            draw_colored_text( curr_path.name_start );
 
             ImGui::TableNextColumn();
-            cataimgui::draw_colored_text( avatar_distance_from_tile( curr_path.recorded_path.front() ) );
+            draw_colored_text( avatar_distance_from_tile( curr_path.recorded_path.front() ) );
 
             ImGui::TableNextColumn();
-            cataimgui::draw_colored_text( curr_path.name_end );
+            draw_colored_text( curr_path.name_end );
 
             ImGui::TableNextColumn();
-            cataimgui::draw_colored_text( avatar_distance_from_tile( curr_path.recorded_path.back() ) );
+            draw_colored_text( avatar_distance_from_tile( curr_path.recorded_path.back() ) );
 
             ImGui::TableNextColumn();
-            cataimgui::draw_colored_text( avatar_distance_from_tile(
-                                              curr_path.recorded_path[curr_path.avatar_closest_i_approximate()] ) );
+            draw_colored_text( avatar_distance_from_tile(
+                                   curr_path.recorded_path[curr_path.avatar_closest_i_approximate()] ) );
 
             ImGui::TableNextColumn();
             ImGui::Text( "%zu", curr_path.recorded_path.size() );
