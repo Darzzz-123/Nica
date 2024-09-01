@@ -1,0 +1,171 @@
+[
+  {
+    "type": "snippet",
+    "category": "<done_conversation_section>",
+    "//": "Avatar response to an NPC that can be used for TALK_NONE responses.",
+    "text": [
+      "Actually, I wanted to ask…",
+      "Actually, I was wondering…",
+      "Can I ask you something else?",
+      "Can we discuss something else?",
+      "Can we talk about something else?",
+      "I want to ask you something.",
+      "I wanted to ask about something else…",
+      "I'd like to ask you about something else.",
+      "I'd like to talk about something else.",
+      "Let's change the subject.",
+      "Let's talk about something else.",
+      "Maybe we should talk about something else.",
+      "So, you were saying?",
+      "What were you saying before?"
+    ]
+  },
+  {
+    "type": "snippet",
+    "category": "<end_talking_bye>",
+    "//": "Avatar response indicated that the conversation is over via TALK_DONE.",
+    "text": [
+      "Bye<wpunc>",
+      "Bye bye<wpunc>",
+      "Farewell<wpunc>",
+      "Goodbye<wpunc>",
+      "I'll see you around<wpunc>",
+      "I'll see you later<wpunc>",
+      "See ya<wpunc>",
+      "See ya later<wpunc>",
+      "See you around<wpunc>",
+      "See you later<wpunc>",
+      "Take care<wpunc>",
+      "Well, bye<wpunc>"
+    ]
+  },
+  {
+    "type": "snippet",
+    "category": "<end_talking_later>",
+    "//": "Avatar response indicated that the conversation is over via TALK_DONE.",
+    "text": [
+      "Another time, perhaps.",
+      "I'll get back to you on that<wpunc>",
+      "Let's do this another time<wpunc>",
+      "Let's get back to it.",
+      "Let's link in later<wpunc>",
+      "Let's pick this up later<wpunc>",
+      "Talk to you later.",
+      "Time and a place, later.",
+      "We can continue this another time.",
+      "We can pick it up later.",
+      "We'll have a chat later.",
+      "We'll pick this up another time."
+    ]
+  },
+  {
+    "type": "snippet",
+    "category": "<end_talking_leave>",
+    "//": "Avatar response indicated that the conversation is over via TALK_DONE.",
+    "text": [
+      "Actually, I need to head out<wpunc>",
+      "Actually, I'm just heading out<wpunc>",
+      "Anyway, I need to move along<wpunc>",
+      "I better head out<wpunc>",
+      "I can't stay to talk right now.",
+      "I don't have time for this.",
+      "I gotta go though<wpunc>",
+      "I gotta go<wpunc>",
+      "I gotta run<wpunc>",
+      "I think I have to get going<wpunc>",
+      "I'd better get going<wpunc>",
+      "I'm afraid I can't talk right now.",
+      "I'm sorry, I gotta go.",
+      "I've got to go<wpunc>",
+      "It's been nice talking to you, but I need to head out<wpunc>",
+      "Nice talking to you, but I gotta go<wpunc>",
+      "Well, I gotta go<wpunc>",
+      "Well, I'd better be going<wpunc>"
+    ]
+  },
+  {
+    "type": "snippet",
+    "category": "<end_talking_nevermind>",
+    "//": "Avatar response indicated that the conversation is over via TALK_DONE.",
+    "text": [
+      "Actually, forget it<wpunc>",
+      "Actually, never mind<wpunc>",
+      "Eh, never mind.",
+      "Forget it.",
+      "Never mind.",
+      "Nothing, nothing<wpunc>",
+      "On second thought, never mind.",
+      "You know what?  Never mind."
+    ]
+  },
+  {
+    "type": "snippet",
+    "category": "<end_talking_later_follower>",
+    "//": "Avatar response indicated that the conversation is over via TALK_DONE.",
+    "text": "<end_talking_later>  <lets_go>"
+  },
+  {
+    "type": "snippet",
+    "category": "<end_talking>",
+    "//": "Avatar response indicated that the conversation is over via TALK_DONE.",
+    "text": [
+      "<end_talking_bye>",
+      "<end_talking_leave>",
+      "<end_talking_leave>  <end_talking_bye>",
+      "<end_talking_later>  <end_talking_bye>"
+    ]
+  },
+  {
+    "type": "snippet",
+    "category": "<BGSS_intro_question>",
+    "//": "avatar response to an NPC that opens up their history.",
+    "text": [
+      "Tell me about how you survived the Cataclysm.",
+      "How did you survive the Cataclysm?",
+      "What was the Cataclysm like for you?",
+      "How did you make it through the initial chaos?",
+      "Tell me how you survived the initial wave of the Cataclysm.",
+      "How did you survive those first few days?",
+      "Mind telling me what happened?",
+      "So, what happened?",
+      "What was it like, at the beginning?",
+      "Mind if I ask what happened, in the beginning?",
+      "Can I ask you, what happened?",
+      "Was it rough surviving thus far?"
+    ]
+  },
+  {
+    "type": "snippet",
+    "category": "<CWH_intro_question>",
+    "//": "avatar response to an NPC that opens up their theories about what the Cataclysm was.",
+    "text": [
+      "How do you think we ended up here?  What even happened?",
+      "What's going on?  Like, big picture, what the hell happened?",
+      "What do you think the Cataclysm even was?",
+      "So how do you think the end of the world happened?",
+      "Have you heard anything about how the apocalypse came about?",
+      "Got any theories on what happened?",
+      "So, want to share what you think happened?",
+      "Tell me, what do you think happened?",
+      "Wondering how it all happened, any ideas?",
+      "Any idea how we ended up here, in this mess?",
+      "Curious, what do you think happened out there?"
+    ]
+  },
+  {
+    "type": "snippet",
+    "category": "<BOSS_intro_question>",
+    "//": "avatar response to an NPC to get breadcrumbs for other NPCs and factions.",
+    "text": [
+      "Have you seen any signs of other survivors?",
+      "Do you know where we could find other survivors?",
+      "Have you seen any sign there are others out there?",
+      "Seen anyone else out there we could find?",
+      "Got any leads on some survivors?",
+      "Any idea where we could find other survivors?",
+      "Any suggestions on how we could find others?",
+      "Reckon we could find some others, perhaps?",
+      "We should try to find some other survivors.  Got any ideas?"
+    ]
+  }
+]
