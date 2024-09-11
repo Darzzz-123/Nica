@@ -92,7 +92,18 @@ static void update_state( const std::string &context, const std::string &step )
 #ifdef TILES
         cata_path path = PATH_INFO::gfxdir() / "cdda.png";
         SDL_Surface_Ptr surf = load_image( path.get_unrelative_path().u8string().c_str() );
-        gLUI->splash_size = { static_cast<float>( surf->w ), static_cast<float>( surf->h ) };
+        // leave some space for the loading text...
+        ImVec2 max_size = ImGui::GetMainViewport()->Size * 0.9;
+        // since drawing the loading text depends on the width of the loading image(?!), enforce a minimum size
+        // FIXME: Calculate the X component properly instead of arbitrary pixel count
+        ImVec2 min_size = {250.0, 1.0};
+        // preserve aspect ratio by finding the longest **relative** side and scaling both sides down by its ratio to max_size
+        float width_ratio = static_cast<float>( surf->w ) / max_size.x;
+        float height_ratio = static_cast<float>( surf->h ) / max_size.y;
+        float longest_side_ratio = width_ratio > height_ratio ? width_ratio : height_ratio;
+        gLUI->splash_size = { static_cast<float>( surf->w ) / longest_side_ratio,
+                              static_cast<float>( surf->h ) / longest_side_ratio
+                            };
         gLUI->splash = CreateTextureFromSurface( get_sdl_renderer(), surf );
         gLUI->window_size = gLUI->splash_size + ImVec2{ 0.0f, 2.0f * ImGui::GetTextLineHeightWithSpacing() };
 #else
