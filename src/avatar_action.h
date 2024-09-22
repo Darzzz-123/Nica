@@ -65,7 +65,7 @@ void fire_ranged_bionic( const item &fake_gun );
 bool fire_turret_manual( turret_data &turret );
 
 // Throw an item  't'
-void plthrow( avatar &you, item_location loc,
+void plthrow( item_location loc,
               const std::optional<tripoint> &blind_throw_from_pos = std::nullopt );
 
 void unload( avatar &you );
