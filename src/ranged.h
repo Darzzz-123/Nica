@@ -28,7 +28,7 @@ namespace target_handler
 using trajectory = std::vector<tripoint>;
 
 /** Generic target select without fire something */
-trajectory mode_select_only( avatar &you, int range );
+trajectory mode_select_only( int range );
 
 /**
  * Firing ranged weapon. This mode allows spending moves on aiming.
