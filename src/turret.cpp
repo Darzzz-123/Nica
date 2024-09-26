@@ -425,8 +425,7 @@ bool vehicle::turrets_aim( std::vector<vehicle_part *> &turrets )
     }
 
     // Get target
-    target_handler::trajectory trajectory = target_handler::mode_turrets( player_character, *this,
-                                            turrets );
+    target_handler::trajectory trajectory = target_handler::mode_turrets( *this, turrets );
 
     bool got_target = !trajectory.empty();
     if( got_target ) {
