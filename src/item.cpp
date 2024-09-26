@@ -10880,6 +10880,7 @@ units::energy item::energy_remaining( const Character *carrier ) const
 
     // Battery(ammo) contained within
     if( is_magazine() ) {
+        ret += energy;
         for( const item *e : contents.all_items_top( pocket_type::MAGAZINE ) ) {
             if( e->typeId() == itype_battery ) {
                 ret += units::from_kilojoule( static_cast<std::int64_t>( e->charges ) );
@@ -11083,8 +11084,22 @@ units::energy item::energy_consume( units::energy qty, const tripoint &pos, Char
     if( is_battery() || fuel_efficiency >= 0 ) {
         int consumed_kj = contents.ammo_consume( units::to_kilojoule( qty ), pos, fuel_efficiency );
         qty -= units::from_kilojoule( static_cast<std::int64_t>( consumed_kj ) );
-        // fix negative quantity
-        if( qty < 0_J ) {
+        // Either we're out of juice or truncating the value above means we didn't drain quite enough.
+        // In the latter case at least this will bump up energy enough to satisfy the remainder,
+        // if not it will drain the item all the way.
+        // TODO: reconsider what happens with fuel burning, right now this stashes
+        // the remainder of energy from burning the fuel in the item in question,
+        // which potentially allows it to burn less fuel next time.
+        // Do we want an implicit 1kJ battery in the generator to smooth things out?
+        if( qty > energy ) {
+            int64_t residual_drain = contents.ammo_consume( 1, pos, fuel_efficiency );
+            energy += units::from_kilojoule( residual_drain );
+        }
+        if( qty > energy ) {
+            qty -= energy;
+            energy = 0_J;
+        } else {
+            energy -= qty;
             qty = 0_J;
         }
     }
@@ -11104,13 +11119,6 @@ units::energy item::energy_consume( units::energy qty, const tripoint &pos, Char
         units::energy bio_used = std::min( carrier->get_power_level(), qty );
         carrier->mod_power_level( -bio_used );
         qty -= bio_used;
-    }
-
-    // If consumption is not integer kJ we need to consume one extra battery charge to "round up".
-    // Should happen only if battery powered and energy per shot is not integer kJ.
-    if( qty > 0_kJ && is_battery() ) {
-        int consumed_kj = contents.ammo_consume( 1, pos );
-        qty -= units::from_kilojoule( static_cast<std::int64_t>( consumed_kj ) );
     }
 
     return wanted_energy - qty;
@@ -14094,20 +14102,26 @@ bool item::process_tool( Character *carrier, const tripoint &pos )
         }
     }
 
-    int energy = 0;
-    if( type->tool->turns_per_charge > 0 &&
-        to_turn<int>( calendar::turn ) % type->tool->turns_per_charge == 0 ) {
-        energy = std::max( ammo_required(), 1 );
-    } else if( type->tool->power_draw > 0_W ) {
-        // kJ (battery unit) per second
-        energy = units::to_kilowatt( type->tool->power_draw );
-        // energy_bat remainder results in chance at additional charge/discharge
-        const int kw_in_mw = units::to_milliwatt( 1_kW );
-        energy += x_in_y( units::to_milliwatt( type->tool->power_draw ) % kw_in_mw, kw_in_mw ) ? 1 : 0;
-    }
+    if( ammo_capacity( ammo_battery ) ) {
+        units::energy energy_to_burn;
+        if( type->tool->turns_per_charge > 0 ) {
+            energy_to_burn += units::from_kilojoule( std::max( ammo_required(),
+                              1 ) ) / type->tool->turns_per_charge;
+        } else if( type->tool->power_draw > 0_mW ) {
+            energy_to_burn += type->tool->power_draw * 1_seconds;
+        }
+        energy_consume( energy_to_burn, pos, carrier );
+    } else {
+        // Non-electrical charge consumption.
+        int charges_to_use = 0;
+        if( type->tool->turns_per_charge > 0 &&
+            to_turn<int>( calendar::turn ) % type->tool->turns_per_charge == 0 ) {
+            charges_to_use = std::max( ammo_required(), 1 );
+        }
 
-    if( energy > 0 ) {
-        ammo_consume( energy, pos, carrier );
+        if( charges_to_use > 0 ) {
+            ammo_consume( charges_to_use, pos, carrier );
+        }
     }
 
     type->tick( carrier, *this, pos );
