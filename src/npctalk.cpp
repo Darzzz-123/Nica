@@ -6541,11 +6541,6 @@ talk_effect_fun_t::func f_teleport( const JsonObject &jo, std::string_view membe
     } else {
         map_prefix.str_val = "";
     }
-    /*remove later
-    if (MAPBUFFER.get_prefix() != "") {
-        map_prefix.str_val = "";
-    }
-    */
     bool force = jo.get_bool( "force", false );
     return [is_npc, target_var, fail_message, success_message, force, map_prefix]( dialogue const & d ) {
         tripoint_abs_ms target_pos = get_tripoint_from_var( target_var, d, is_npc );
@@ -6553,9 +6548,8 @@ talk_effect_fun_t::func f_teleport( const JsonObject &jo, std::string_view membe
         if( teleporter ) {
             std::string prefix = map_prefix.evaluate( d );
             if( !prefix.empty() ) {
-                add_msg( MAPBUFFER.get_prefix() );
+                g->save();
                 MAPBUFFER.set_prefix( prefix );
-                add_msg( MAPBUFFER.get_prefix() );
                 MAPBUFFER.clear();
                 overmap_buffer.clear();
                 get_map() = map();
